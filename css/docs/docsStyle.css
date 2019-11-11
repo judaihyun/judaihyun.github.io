@@ -1,0 +1,41 @@
+
+.note{
+    border-radius: 10px;
+    background:#eee;
+    padding:1rem;
+}
+.codeDes{
+    border-radius: 10px;
+    background:rgb(143, 206, 235);
+    padding:1rem;
+}
+.note_title{
+    font-size: 1rem;
+    padding-bottom:1rem;
+    font-weight: bold;
+    display: block;
+}
+.anchor-link{
+    font-weight: bold;
+    color:rgba(4, 6, 7, 0.1);
+}
+section{
+    border:1px solid gray;
+    padding:1rem;
+}
+nav{
+    display: inline-block;
+    border:1px solid black;
+    width:250px;
+    height: 100%;
+}
+.content_container{
+    display: inline-block;
+}
+
+.content{
+    padding-top: 1rem;
+    padding-left: 5rem;
+    padding-right: 5rem;
+    padding-bottom: 3rem;
+}
