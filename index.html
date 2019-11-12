@@ -3,19 +3,23 @@
     <head>
         <meta charset="utf-8">
         <title>개발자 가이드</title>
+        <link rel='stylesheet' href='css/docs/docsMenu.css' type='text/css'/>
+        <script src='js/docs.js'></script>
+        <script src='../canvasPractice/JChart/JChart.js'></script>
     </head>
 <body>
+
 <div class='container'>
-<header style='border:1px solid red; text-align: right;'>
-   [현재 문서 버전] v0.1  <> v0.1  [현재 소스 버전]
-</header>
+
+<header></header>
+
 <nav style='float:left; min-width:15%;'>
 <ul id='root-ul'>
-    <li>JChart Sample</li>
-    <li>사용법
+    <li data-url='1-1'>JChart Sample</li>
+    <li data-url='1-1'>사용법</li>
     <ul>
-        <li><a href='#' data-url='1-1'>prerequisite</a></li>
-        <li><a href='#' data-url='1-2'>settings</a></li>
+        <li data-url='1-1'>prerequisite</li>
+        <li data-url='1-2'>settings</li>
         <li>eeeeeeeeee</li>
     </ul>
     <li>API 문서</li>
@@ -24,30 +28,25 @@
 </nav>
 
 <section>
-    <iframe id='ifItem' width="80%" style='height:100vh;' frameborder='0'></iframe>
+    <iframe src='docs/usage_pre.html' id='ifItem' width="80%" style='height:100vh;' frameborder='0'></iframe>
 </section>
 </div>
 <script>
+
+    const DOC_VERSION = '0.1';
+    
     let pageList = {
         '1-1':'docs/usage_pre.html',
         '1-2':'docs/usage_setting.html'
     };
 
-    document.addEventListener('DOMContentLoaded', ()=>{
-        'use strict'
-        let rootUl = document.getElementById('root-ul');
-        rootUl.addEventListener('click', (e)=>{
-            showPage(e.target);
-        });
+document.addEventListener('DOMContentLoaded',()=>{
 
-    },false);
+    init();
 
-    function showPage(value)
-    {
-        let url = pageList[value.dataset.url];
-        let aIframe = document.getElementById('ifItem');
-        aIframe.src = url;
-    }
+    
+},false);
+
 </script>
 </body>
 </html>

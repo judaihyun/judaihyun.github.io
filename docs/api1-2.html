@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang='ko'>
+<head>
+    <meta charset="utf-8">
+    <title>API 가이드</title>
+    <link rel='stylesheet' href='../css/docs/docsContent.css' type='text/css'/>
+</head>
+<body>
+<div class='container'>
+ <div class='content_container'>
+    <section class='content'>
+<h1>JChart Method</h1>
+<br>
+<h3 id='prerequisite'>
+<a class='anchor-link' href='#update'>#</a>
+update()
+</h3>
+<br>
+<section>
+    update() 메서드는 JChart(ctx, config)의 인자 config안의 설정,DATA를 기준으로 새로이 그려준다.<br>
+    이를 이용하여 config.data에 새로이 값을 대입 후 update를 실행하여 차트를 사용한다.<br>
+    </br></br>
+
+    <div class='codeDes'>
+        <span class='note_title'>example</span>
+        var dummy = [randomScalingFactor(),randomScalingFactor()]; //랜덤 값 배열 생성<br>
+        config.data.datasets[0].data = dummy;  // config파일에 생성된 값을 대입<br>
+        myChart.update();  // config값을 기준으로 새로 그려주기.<br>
+    </div>
+   
+</section>
+
+</section>
+</div>
+</div>
+</body>
+</html>
