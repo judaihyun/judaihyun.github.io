@@ -34,8 +34,13 @@ nav{
 }
 
 .content{
+    font-size:1.5rem;
     padding-top: 1rem;
     padding-left: 5rem;
     padding-right: 5rem;
     padding-bottom: 3rem;
+}
+
+.apiContent{
+    margin-bottom: 7rem;
 }
