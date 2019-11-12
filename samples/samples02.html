@@ -5,11 +5,19 @@
 <meta charset="utf-8">
 <head>
     <title>sample02</title>
-    <script src='../makeChartTest/JChart.js'></script>
+    <script src='../js/JChart.js'></script>
+    <script src='../js/randomGenerator.js'></script>
 </head>
 <body>
-    <div id='container' width="70%;">
-        <canvas id='myChart'>
+
+    <div id='container' width="10%;">
+        <canvas id='myChart1'>
+            Canvas Not supported.
+        </canvas>
+    </div>
+    <button type='button' id='chartUpdate'>update</button>
+    <div width="10%;">
+        <canvas id='myChart2'>
             Canvas Not supported.
         </canvas>
     </div>
@@ -17,12 +25,124 @@
 
 <script>
 
-    var canvas = document.getElementById('myChart');
-    var ctx = canvas.getContext('2d');
+    var canvas1 = document.getElementById('myChart1');
+    var canvas2 = document.getElementById('myChart2');
+    var ctx1 = canvas1.getContext('2d');
+    var ctx2 = canvas2.getContext('2d');
 
-    let config = {};
-    let myChart = new JChart(ctx, config);
+    let config = 
+{
+    type:'line',
+    data:{
+        labels: [
+            'Jan','Feb','Mar','Apr','May'
+        ],
+        datasets: [{
+            label: 'firstLable',
+            data: [
+                -50,1.5,-30
+            ]
+            }/*,{
+            label: 'secondLable',
+            data:[-20]
+            }*/ ]
+    },
+    options:{
+        responsive: true,
+        layout: {
+            padding: {
+                top: 40.5,
+				right: 40,
+				bottom: 60.5,
+				left: 65.5
+            }
+        },
+        scales: {
+            xAxes: [{
+                display: true,
+                scaleLabel: {
+                    display: true,
+                    labelString: 'Month'
+                }
+            }],
+            yAxes: [{
+                display: true,
+                scaleLabel: {
+                    display: true,
+                    labelString: 'Value'
+                }
+            }]
+        } 
+    }
+};
 
+let config2 = 
+{
+    type:'line2',
+    data:{
+        labels: [
+            'AAA','BBB','CCC','DDD','EEE'
+        ],
+        datasets: [{
+            label: 'firstLable',
+            data: [
+                0,12.5,40
+            ]
+            }]
+    },
+    options:{
+        responsive:false,
+        layout: {
+            padding: {
+                top: 40.5,
+				right: 40,
+				bottom: 60.5,
+				left: 65.5
+            }
+        },
+        scales: {
+            xAxes: [{
+                display: true,
+                scaleLabel: {
+                    display: true,
+                    labelString: 'Month'
+                }
+            }],
+            yAxes: [{
+                display: true,
+                scaleLabel: {
+                    display: true,
+                    labelString: 'K@K@K'
+                }
+            }]
+        } 
+    }
+};
+
+    let myChart1 = new JChart(ctx1, config);
+    let myChart2 = new JChart(ctx2, config2);
+
+    Samples.utils.srand(Date.now());
+    var randomScalingFactor = function() {
+        return Math.round(Samples.utils.rand(-100, 100));
+    };
+    var randomScalingFactor2 = function() {
+        return Math.round(Samples.utils.rand(-100, 100));
+    }
+
+    document.getElementById('chartUpdate').addEventListener('click', function(){
+        var dummy = [randomScalingFactor(),randomScalingFactor(),randomScalingFactor(),
+        randomScalingFactor(), randomScalingFactor()];
+        console.warn('dummy : ' + dummy);
+        config.data.datasets[0].data = dummy;
+
+        var dummy = [randomScalingFactor2(),randomScalingFactor2(),randomScalingFactor2(),
+        randomScalingFactor2(), randomScalingFactor2()];
+        config2.data.datasets[0].data = dummy;
+        
+        myChart1.update();
+        myChart2.update();
+    },false);
 </script>
 </html>
 

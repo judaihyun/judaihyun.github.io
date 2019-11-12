@@ -1,5 +1,5 @@
 
-    const CODE_VERSION = '0.1';
+    const CODE_VERSION = '0.2';
 
 (function(global, factory)
 {
@@ -277,7 +277,7 @@
             }
 
         },
-        getGcd(width, height)
+        getGcd(width, height)  // for test
         {
             if(height == 0) return width;
             return this.getGcd(height, width % height);
@@ -341,7 +341,9 @@
         yPoint : []
     }];
     
-    let Draw = {
+    let Draw = function(){
+
+    return{
         drawOptions()
         {
             let ctx = this.getContext();
@@ -386,7 +388,7 @@
                 ctx.lineTo(x, height);
 
                 dataPoints[0].xPoint.push(x);
-                Draw.bottomLabel(label[yAxes], x, options.chartHeight + options.bottomPadding);
+                this.bottomLabel(label[yAxes], x, options.chartHeight + options.bottomPadding);
                 ctx.stroke();
             }
 
@@ -452,7 +454,7 @@
                 {
                     ctx.lineWidth = lineWidth * 2;
                 }
-                Draw.yTickLabel(yTick, options.leftPadding - 20, y);
+                this.yTickLabel(yTick, options.leftPadding - 20, y);
                 ctx.moveTo(options.leftPadding - 10, y);
                 ctx.lineTo(width, y);
                 yTick -= tickStep;
@@ -479,13 +481,13 @@
 
             let label = data.labels;
             
-            Draw.yGridWithLabel(label);
+            this.yGridWithLabel(label);
             
             let dataValue = data.datasets[0].data;
             let maxValue = Math.max.apply(null, dataValue);
             let minValue = Math.min.apply(null, dataValue);
 
-            Draw.xGridWithLabel(maxValue, minValue);
+            this.xGridWithLabel(maxValue, minValue);
 
             Helper.drawingRect(ctx); // for debug only
 
@@ -589,19 +591,24 @@
             let opts = config.options;
             let data = config.data; 
 
-            Draw.drawGrid(data);
-
+            this.drawGrid(data);
+            for(var i = 0; i < data.datasets.length; i++)
+            {
+                this.linePoint(data.datasets[i].data, dataPoints[0].xPoint);
+            }
+            /*
             data.datasets.forEach(function(i, index){
-                Draw.linePoint(i.data, dataPoints[0].xPoint);
+                this.linePoint(i.data, dataPoints[0].xPoint);
             });
+            */
 
-            Draw.lineCurve();
+            this.lineCurve();
 
             for(let axes in opts.scales)
             {   
                 if(opts.scales[axes][0].display)
                 {
-                    Draw.axisTitles(opts.scales[axes], axes);
+                    this.axisTitles(opts.scales[axes], axes);
                 }
             }
         },
@@ -611,6 +618,7 @@
         setContext(_ctx){
             this.ctx = _ctx;
         }
+    }
     }
 
 
@@ -622,21 +630,25 @@
         };
 
         let me = this;
+
         me.ctx = Helper.contextValidator(ctx, config);
-        if(me.ctx < 0)
-        return -1;
+        if(me.ctx < 0)  return -1;
 
         me.canvas = me.ctx.canvas;
         me.config = Helper.initConfig(config);
 
-        me.initialize();
+        me.draw = new Draw();
+        me.draw.setContext(ctx);
+      
         me.bindEvent();
+
         me.baseDrawing();
+   
         return {
             update : function()
             {   
                 me.ctx.clearRect(0,0, me.ctx.canvas.width, me.ctx.canvas.height);
-                Draw.baseCanvas(me.config);
+                me.draw.baseCanvas(me.config);
             },
             changeRatio : function()
             {
@@ -657,16 +669,10 @@
         }
     };
 
-    JChart.prototype.initialize = function()
-    {
-        Draw.setContext(this.ctx);
-        return this;
-    }; 
-
     JChart.prototype.bindEvent = function()
     {
-        let me = this;
-        var responsive = config.options.responsive || false;
+        let me = this; 
+        let responsive = me.config.options.responsive || false;
         if(responsive)
         {
             me.bindResizeEvent();
@@ -683,7 +689,7 @@
         Helper.ratioCalculator(me.ctx);
 
         Helper.computeSize(me.ctx);
-        Draw.baseCanvas(me.config);
+        me.draw.baseCanvas(me.config);
     }
    
     JChart.prototype.bindResizeEvent = function()
@@ -704,7 +710,7 @@
         debugConsole(`resize width=${me.canvas.width} height=${me.canvas.height}`);
 
         Helper.computeSize(me.ctx);
-        Draw.baseCanvas(this.config);
+        me.draw.baseCanvas(this.config);
     } 
 
 

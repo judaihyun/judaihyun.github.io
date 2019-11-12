@@ -15,13 +15,13 @@
 
 <nav style='float:left; min-width:15%;'>
 <ul id='root-ul'>
-    <li data-url='1-1'>JChart Sample</li>
+    <li data-url='1' class='menu-active'>Overview</li>
     <li data-url='1-1'>사용법</li>
     <ul>
         <li data-url='1-1'>사용 준비</li>
         <li data-url='1-2'>초기화</li>
         <li data-url='1-3'>기본 config 설정</li>
-        <li data-url='1-4'>표출</li>
+        <li data-url='1-4'>단일 차트</li>
         <li data-url='1-5'>다중 차트</li>
     </ul>
     <li>API 문서</li>
@@ -38,14 +38,19 @@
     const DOC_VERSION = '0.1';
     
     let pageList = {
+        '1':'docs/overview.html',
         '1-1':'docs/usage_pre.html',
-        '1-2':'docs/usage_setting.html'
+        '1-2':'docs/usage_setting.html',
+        '1-3':'docs/usage_config.html',
+        '1-4':'docs/usage_basic.html',
+        '1-5':'docs/usage_multi.html#multi',
+
     };
 
 document.addEventListener('DOMContentLoaded',()=>{
 
     init();
-
+    showPage(pageList['1']);
     
 },false);
 
