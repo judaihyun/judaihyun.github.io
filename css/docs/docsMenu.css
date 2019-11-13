@@ -5,6 +5,16 @@ header{
     padding: 2rem;
 }
 
+ul{
+    list-style: none;
+    padding: 5px 0px 5px 5px;
+    margin-bottom: 5px;
+    border-bottom: 1px solid #efefef;
+    border-top: 1px solid #efefef;
+    font-size: 1rem;
+}
+
+
 li{
     cursor: pointer;
 }

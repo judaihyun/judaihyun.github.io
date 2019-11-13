@@ -4,7 +4,7 @@
 <html lang='ko'>
 <meta charset="utf-8">
 <head>
-    <title>sample02</title>
+    <title>sample03</title>
     <script src='../js/JChart.js'></script>
     <script src='../js/randomGenerator.js'></script>
 </head>
@@ -20,10 +20,7 @@
 
 <script>
 
-    var canvas1 = document.getElementById('myChart1');
-    var ctx1 = canvas1.getContext('2d');
-
-    let config = {
+let config = {
     type:'line',
     data:{
         labels: [
@@ -65,21 +62,27 @@
     }
 };
 
+    var canvas1 = document.getElementById('myChart1');
+    var ctx1 = canvas1.getContext('2d');
+
     let myChart1 = new JChart(ctx1, config);
 
-    Samples.utils.srand(Date.now());
-    var randomScalingFactor = function() {
-        return Math.round(Samples.utils.rand(-100, 100));
-    };
-
     document.getElementById('chartUpdate').addEventListener('click', function(){
-        var dummy = [randomScalingFactor(),randomScalingFactor(),randomScalingFactor(),
-        randomScalingFactor(), randomScalingFactor()];
+        var dummy = [5,10,15,-20];
         console.warn('dummy : ' + dummy);
         config.data.datasets[0].data = dummy;
         
         myChart1.update();
     },false);
+
+    /*
+    Samples.utils.srand(Date.now());
+    var randomScalingFactor = function() {
+        return Math.round(Samples.utils.rand(-100, 100));
+    };
+
+  
+    */
 </script>
 </html>
 

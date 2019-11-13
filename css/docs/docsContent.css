@@ -4,13 +4,9 @@
     background:#eee;
     padding:1rem;
 }
-.codeDes{
-    border-radius: 10px;
-    background:rgb(143, 206, 235);
-    padding:1rem;
-}
+
 .note_title{
-    font-size: 1rem;
+    font-size: 2rem;
     padding-bottom:1rem;
     font-weight: bold;
     display: block;
@@ -23,6 +19,7 @@ section{
     border:1px solid gray;
     padding:1rem;
 }
+
 nav{
     display: inline-block;
     border:1px solid black;
@@ -34,6 +31,7 @@ nav{
 }
 
 .content{
+    line-height: 3rem;
     font-size:1.5rem;
     padding-top: 1rem;
     padding-left: 5rem;
@@ -43,4 +41,11 @@ nav{
 
 .apiContent{
     margin-bottom: 7rem;
+}
+
+.codeDes{
+    line-height: 2rem;
+    border-radius: 10px;
+    background:rgb(143, 206, 235);
+    padding:1rem;
 }

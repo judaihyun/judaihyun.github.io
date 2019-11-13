@@ -12,9 +12,10 @@ function init()
     let rootUl = document.getElementById('root-ul');
     clickedItem = document.querySelector('.menu-active');
     rootUl.addEventListener('click', (e)=>{
+        if(e.target.nodeName !== 'LI') return; 
         showPage(pageList[e.target.dataset.url]);
         clickHandler(e.target);
-    });
+    },{capture:true});
 };
 
 function clickHandler(target)
@@ -29,6 +30,7 @@ function clickHandler(target)
 
 function showPage(value)
 {
+    console.log(value);
     let aIframe = document.getElementById('ifItem');
     aIframe.src = value;
 };
