@@ -1,0 +1,85 @@
+
+
+<!DOCTYPE html>
+<html lang='ko'>
+<meta charset="utf-8">
+<head>
+    <title>sample02</title>
+    <script src='../js/JChart.js'></script>
+    <script src='../js/randomGenerator.js'></script>
+</head>
+<body>
+
+    <div id='container' width="10%;">
+        <canvas id='myChart1'>
+            Canvas Not supported.
+        </canvas>
+    </div>
+    <button type='button' id='chartUpdate'>update</button>
+</body>
+
+<script>
+
+    var canvas1 = document.getElementById('myChart1');
+    var ctx1 = canvas1.getContext('2d');
+
+    let config = {
+    type:'line',
+    data:{
+        labels: [
+            'Jan','Feb','Mar','Apr','May'
+        ],
+        datasets: [{
+            label: 'firstLable',
+            data: [
+                -50,1.5,-30
+            ]
+            }]
+    },
+    options:{
+        responsive: true,
+        layout: {
+            padding: {
+                top: 40.5,
+				right: 40,
+				bottom: 60.5,
+				left: 65.5
+            }
+        },
+        scales: {
+            xAxes: [{
+                display: true,
+                scaleLabel: {
+                    display: true,
+                    labelString: 'Month'
+                }
+            }],
+            yAxes: [{
+                display: true,
+                scaleLabel: {
+                    display: true,
+                    labelString: 'Value'
+                }
+            }]
+        } 
+    }
+};
+
+    let myChart1 = new JChart(ctx1, config);
+
+    Samples.utils.srand(Date.now());
+    var randomScalingFactor = function() {
+        return Math.round(Samples.utils.rand(-100, 100));
+    };
+
+    document.getElementById('chartUpdate').addEventListener('click', function(){
+        var dummy = [randomScalingFactor(),randomScalingFactor(),randomScalingFactor(),
+        randomScalingFactor(), randomScalingFactor()];
+        console.warn('dummy : ' + dummy);
+        config.data.datasets[0].data = dummy;
+        
+        myChart1.update();
+    },false);
+</script>
+</html>
+
