@@ -1,5 +1,5 @@
 
-    const CODE_VERSION = '0.2';
+    const CODE_VERSION = '0.3';
 
 (function(global, factory)
 {
@@ -164,6 +164,10 @@
             if(!Helper.isExist(config.options.ratio))
             {
                 config.options.ratio = defaultConfig.options.ratio;
+            }
+            if(!Helper.isExist(config.options.layout))
+            {
+                config.options.layout = defaultConfig.options.layout;
             }
             computedOptions = Object.assign(computedOptions, config.options );
             

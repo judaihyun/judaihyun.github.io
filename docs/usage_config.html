@@ -10,15 +10,31 @@
 
 <div class='content_container'>
     <section class='content'>
-<h1>Usage - config </h1>
+<h1>Usage - config</h1>
 <br>
 <h3 id='config'>
 <a class='anchor-link' href='#config'>#</a>
-config 설정
+기본 config 설정
 </h3>
 <br>
 <section>
+기본적으로 config에 아무런 옵션이 없을 경우에도 표출이 되나, 의미있는 그래프를 그리기 위해서는 최소한 <br>
+다음과 같은 설정이 필요하다.<br><br>
+<div style='text-align: center;'>
+    <img src='../images/docs/usage-config_code.PNG' width='300vw' height='300vh'>
+    <img src='../images/docs/usage-config_chart.PNG' width='450vw' height='300vh'>
+</div>
+    <br>
+<div class='codeDes'>
+    <span class='note_title'>note.</span>
+    let config[object] = {};<br><br>
+    type[string] : line   ->  line chart를 의미.<br>
+    data[object] : 표출할 데이터(point, label명) 객체<br>
+    labels[array] : x축 label 명, data의 갯수와 동일해야 한다.<br>
+    datasets[array[object]] : 실제 표출할 데이터, -50, 1.5, -30이 차트에 찍힘.<br>
 
+    
+</div>
 
 </section>
 

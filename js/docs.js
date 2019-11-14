@@ -2,12 +2,22 @@
 
 
     let clickedItem;  
+    let timerId;
+
+function versionIndicator(elem)
+{
+    if(CODE_VERSION===DOC_VERSION) clearInterval(timerId);
+    let temp = elem.style.backgroundColor;
+    elem.style.backgroundColor = temp == "white" ? "red" : "white";
+} 
 
 function init()
 {
-    let headers = document.getElementsByTagName('header')[0];
-        if(CODE_VERSION!==DOC_VERSION) headers.style.color = 'red';
-        headers.innerHTML = `[현재 문서 버전] v${DOC_VERSION}  <>  v${CODE_VERSION} [소스 버전]`;
+        let indicator = document.getElementById('versionIndicator');
+        indicator.style.backgroundColor = 'white';
+        if(CODE_VERSION!==DOC_VERSION) 
+            timerId = setInterval(versionIndicator.bind(this,indicator), 1000);
+        indicator.innerHTML = `[현재 문서 버전] v${DOC_VERSION}  <>  v${CODE_VERSION} [소스 버전]`;
 
     let rootUl = document.getElementById('root-ul');
     clickedItem = document.querySelector('.menu-active');
