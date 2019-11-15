@@ -17,16 +17,15 @@
 </h3>
 <br>
 <section>
-    JChart를 초기화 하기 위해서는 let/var chart = new JChart(); 와 같이 new 키워드를 이용하여 생성한다.</br></br>
-    <img src='../images/docs/api1-new-1.PNG'><br><br>
-    <div class='note'>
-        <span class='note_title'>Note.</span>
-        - new 키워드를 직접적으로 명시하는 것을 권장하나 new를 제거하여도 내부적으로 new로 생성하게 끔 처리되어 있음.
-    </div>
+    JChart를 초기화 하기 위해서는 let chart = new JChart(context, config); <br>와 같이 new 키워드를 이용하여 생성한다.</br></br>
+    <img src='../images/docs/api1-new-1.PNG'><br>
+        - new 키워드를 직접적으로 명시하는 것을 권장.<br>
+         new를 제거하여도 내부적으로 new로 생성하게 끔 처리되어 있음.
 <br><br>
 
     <div class='codeDes'>
-        new JChart(CanvasRenderingContext2D, Object); <br><br>
+        생성자<br>
+        JChart(CanvasRenderingContext2D, Object); <br><br>
         return : JChart Object<br>
         CanvasRenderingContext2D : (필수) 드로잉 컨텍스트 
         <a href='https://developer.mozilla.org/ko/docs/Web/API/CanvasRenderingContext2D' target='_blank'>CanvasRenderingContext2D</a><br>

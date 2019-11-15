@@ -16,12 +16,36 @@ config = {};
 </h3>
 <br>
 <section class='apiContent'>
-  
+    차트에 대한 설정은 object형태로 JChart 생성자 인자로 넘긴다.<br>
+    최상단을 기준으로 아래에 data, options가 위치한다.<br>
+
+    1. data = {};<br>
+    <img src='../images/docs/usage-config_data.PNG'><br>
+    labels[array] = x축 레이블 <br>
+    datasets[array[object]] = data 정보를 담은 array
+    - datasets 하위<br>
+    data[array] = 실제 x,y포인트 지점에 해당하는 data 값이다. <br>
+    (이 data값의 갯수와 labels[array]와 매칭된다)<br><br>
+
+    2. options = {};<br>
+    <img src='../images/docs/usage-config_options.PNG'><br>
+    responsive = [default : false], true일 경우 창의 크기에 따라 다시 그려진다.<br>
+    layout[object] = 차트의 padding, margin, color (현재 padding만 지원)<br>
+    - layout 하위<br>
+    padding[object] = 차트의 padding 지정 <br>
+    <br><br>
+    scales[object] = x,y축에 대한 lable 지정 <br>
+    xAxes = x축에 대한 label, display 유무 지정 <br>
+    scaleLable[object] = x축에 대한 label 문자열 <br>
+    display = [default : false], true일 경우, scaleLabel에 지정한 문자열 출력 유무<br>
+
 </section>
         
 
 </section>
 </div>
 </div>
+<script>
+</script>
 </body>
 </html>

@@ -35,10 +35,6 @@
         <li data-url='2-4'>setLog()</li>
     </ul>
     <li data-url="3-1">config</li>
-    <ul>
-        <li data-url='3-1'>config</li>
-        <li data-url='3-2'>responsive</li>
-    </ul>
     </li>
     </li>
 </ul>
@@ -50,7 +46,7 @@
 </div>
 <script>
 
-    const DOC_VERSION = '0.3';
+    const DOC_VERSION = '0.4';
     
     let pageList = {
         '1':'docs/overview.html',
@@ -64,15 +60,14 @@
         '2-2': 'docs/api_2-2.html#changeRatio',
         '2-3': 'docs/api_2-2.html#getCurrent',
         '2-4': 'docs/api_2-2.html#setLog',
-        '3-1': 'docs/api_3-1.html#config',
-        '3-2': 'docs/api_3-2.html#responsive'
+        '3-1': 'docs/api_3-1.html#config'
     };
 
 document.addEventListener('DOMContentLoaded',()=>{
 
     init();
     showPage(pageList['1']);
-    
+
 },false);
 
 </script>
