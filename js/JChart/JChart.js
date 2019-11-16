@@ -1,5 +1,5 @@
 
-    const CODE_VERSION = '0.3';
+    const CODE_VERSION = '0.5';
 
 (function(global, factory)
 {
