@@ -58,6 +58,7 @@ document.addEventListener('DOMContentLoaded', function()
     let posDiv = document.getElementById('pos');
     let canvas = document.getElementById('myChart');
     let drawWidth = document.getElementById('drawingWidth');
+    let currentData = document.getElementById('currentData');
     let ctx = canvas.getContext('2d');
 
     let guide = new Guide(ctx, canvas);
@@ -87,6 +88,7 @@ document.addEventListener('DOMContentLoaded', function()
 
     document.getElementById('chartUpdate').addEventListener('click', function(){
         var dummy = [randomScalingFactor(),randomScalingFactor(),randomScalingFactor(),randomScalingFactor(), randomScalingFactor()];
+        currentData.innerHTML = '현재 데이터 : [' + dummy + ']';
         console.warn('dummy : ' + dummy);
         config.data.datasets[0].data = dummy;
         console.log(config);
