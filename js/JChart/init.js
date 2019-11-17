@@ -125,8 +125,8 @@ document.addEventListener('DOMContentLoaded', function()
     },false)
 
 
-    document.addEventListener('load', function(){
-        window.open('https://judaihyun.github.io/#');
+    window.addEventListener('load', function(){
+        window.open('index.html');
     },false);
 
 
