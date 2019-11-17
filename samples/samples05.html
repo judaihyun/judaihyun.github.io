@@ -4,9 +4,9 @@
 <html lang='ko'>
 <meta charset="utf-8">
 <head>
-    <title>sample04</title>
-    <script src='../js/JChart.js'></script>
-    <script src='../js/randomGenerator.js'></script>
+    <title>sample05</title>
+    <script src='../js/JChart/JChart.js'></script>
+    <script src='../js/JChart/randomGenerator.js'></script>
 </head>
 <body>
 
@@ -16,6 +16,8 @@
         </canvas>
     </div>
     <button type='button' id='chartUpdate'>update</button>
+    <button type='button' id='autoUpdate'>자동실행(1초)</button>
+    <button type='button' id='autoUpdateStop'>실행정지</button>
 </body>
 
 <script>
@@ -28,7 +30,6 @@ let config =
         ],
         datasets: [{
             data: [
-                -50,1.5,-30
             ]
             }]
     },
@@ -59,15 +60,28 @@ let config =
     }
 };
 
-    var canvas1 = document.getElementById('myChart1');
-    var ctx1 = canvas1.getContext('2d');
+    var canvas = document.getElementById('myChart1');
+    var ctx = canvas.getContext('2d');
 
-    let myChart1 = new JChart(ctx1, config);
+    let myChart = new JChart(ctx, config);
 
     var dummy = [];
     var dummyLable = [];
     let count = 0;
-    document.getElementById('chartUpdate').addEventListener('click', function(){
+    let timerId;
+
+    document.getElementById('chartUpdate').addEventListener('click', chartUpdate);
+
+    document.getElementById('autoUpdate').addEventListener('click', function(){
+        timerId = setInterval(chartUpdate, 1000);
+    },false);
+
+    document.getElementById('autoUpdateStop').addEventListener('click', function(){
+        clearInterval(timerId);
+    },false);
+
+    function chartUpdate()
+    {
         if(dummy.length > 4){
             dummy.shift();
             dummyLable.shift();
@@ -80,8 +94,9 @@ let config =
         config.data.labels = dummyLable;
         config.data.datasets[0].data = dummy;
         
-        myChart1.update();
-    },false);
+        myChart.update();
+    }
+
 
     
     Samples.utils.srand(Date.now());

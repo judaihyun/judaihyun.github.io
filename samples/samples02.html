@@ -5,18 +5,18 @@
 <meta charset="utf-8">
 <head>
     <title>sample02</title>
-    <script src='../js/JChart.js'></script>
-    <script src='../js/randomGenerator.js'></script>
+    <script src='../js/JChart/JChart.js'></script>
+    <script src='../js/JChart/randomGenerator.js'></script>
 </head>
 <body>
 
-    <div id='container' width="10%;">
+    <div id='container' style='width:40%'>
         <canvas id='myChart1'>
             Canvas Not supported.
         </canvas>
     </div>
     <button type='button' id='chartUpdate'>update</button>
-    <div width="10%;">
+    <div id='container' style='width:40%'>
         <canvas id='myChart2'>
             Canvas Not supported.
         </canvas>
@@ -91,7 +91,7 @@ let config2 =
             }]
     },
     options:{
-        responsive:false,
+        responsive:true,
         layout: {
             padding: {
                 top: 40.5,

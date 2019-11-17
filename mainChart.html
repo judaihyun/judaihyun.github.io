@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <html>
     <head>
+        <meta charset="utf-8">
         <link rel='stylesheet' href='css/reset.css' type='text/css'/>
         <link rel='stylesheet' href='css/normalize.css' type='text/css'/>
         <style>
@@ -56,11 +57,23 @@
             }
      
         </style>
-        <script src='js/JChart/canvasGuideForDevelop.js'></script>
+        <script src='js/JChart/canvasGuideForDevelop.js'></script> 
         <script src='js/JChart/randomGenerator.js'></script>
         <script src='js/JChart/JChart.js'></script>
         <script src='js/JChart/init.js'></script>
-        </script>
+<script>
+document.addEventListener('DOMContentLoaded', function(){
+
+    var browse = navigator.userAgent.toLowerCase(); 
+        
+    if( (navigator.appName == 'Netscape' && browse.indexOf('trident') != -1) || (browse.indexOf("msie") != -1)) {
+         alert("현재 JChart는 Chrome(ES6)에서 동작합니다.");        
+    }
+    alert('가이드 문서가 탭으로 추가됩니다.');
+    window.open('index.html','width=400,height=500');
+ 
+},false);
+</script>
     </head>
     <body>
         <div class='canvasContainer' style='width:60%;'>
@@ -83,17 +96,17 @@
             <div class='areaBox'>
                 <label for='areaShow'>영역 표시</label>
                 <select id='areaShow'>
-                    <option value='1'>canvasArea</option>
-                    <option value='2'>chartArea</option>
-                    <option value='3'>xAxisCategory</option>
-                    <option value='4'>yAxisTitle</option>
+                    <option>canvasArea</option>
+                    <option>chartArea</option>
+                    <option>xAxisCategory</option>
+                    <option>yAxisTitle</option>
                 </select>
                 <button type='button' id='showBtn'>show</button>
             </div>
             <div class='controlBox'>
                 <div class='ratioSize'>
-                    <input type='text' class='ratioInput' id='ratioX'></input>
-                    <input type='text' class='ratioInput' id='ratioY'></input>
+                    <input type='text' class='ratioInput' id='ratioX' value='21'></input>
+                    <input type='text' class='ratioInput' id='ratioY' value='9'></input>
                     <button type='button' id='changeRatio'>종횡비 변환</button>
                 </div>
             </div>
@@ -102,7 +115,15 @@
             </div>
         </div>
     </div>
-
+    <br><br><br><br>
+    <div style='line-height: 1.5rem; padding-left:5%;'>
+        <span style='font-weight: bold;'>다른 예제 </span><br>
+        <span><a href='samples/samples02.html' target='_blank'>2개의 차트</a>(서로 다른 설정)</span><br>
+        <span><a href='samples/samples05.html' target='_blank'>data 자동 추가</a></span><br>
+        <span>해당 소스 링크 : <a href='https://github.com/judaihyun/canvas/tree/develop' target='_blank'>
+            https://github.com/judaihyun/canvas/tree/develop</a></span><br>
+        <span>비고 : webpack등의 모듈러 미사용, IE11미지원(ES6문법에 따른) </span><br>
+    </div>
         <div id='pos'></div>
     </body>
 </html>
