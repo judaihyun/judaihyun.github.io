@@ -125,6 +125,11 @@ document.addEventListener('DOMContentLoaded', function()
     },false)
 
 
+    document.addEventListener('load', function(){
+        window.open('https://judaihyun.github.io/#');
+    },false);
+
+
 
 
 },false);
