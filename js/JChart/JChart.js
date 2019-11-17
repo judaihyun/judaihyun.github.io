@@ -1,5 +1,5 @@
 
-    const CODE_VERSION = '0.5';
+    const CODE_VERSION = '0.6';
 
 (function(global, factory)
 {
@@ -34,8 +34,11 @@
         titleMarginBottom: 6,
         titleFontColor: '#fff',
         titleAlign: 'left',
-        gridlineColor: 'rgba(0,0,0,1)',
-        gridLineWidth: 0.5
+        gridLineColor: 'rgba(0,0,0,1)',
+        gridLineWidth: 0.5,
+        curveLineColor: 'green',
+        dataPointColor: 'blue'
+
     };
 
     /* JChart 생성시 config가 비어있을 경우 이 defaultConfig 값을 사용 */
@@ -181,8 +184,8 @@
             let parentWidth = parentNode.clientWidth;
             let parentHeight = parentNode.clientHeight;
 
-            console.log(`parent width=${parentWidth} height=${parentHeight}`);
-            console.log(`original width=${ctx.canvas.width} height=${ctx.canvas.height}`);
+            //console.log(`parent width=${parentWidth} height=${parentHeight}`);
+            //console.log(`original width=${ctx.canvas.width} height=${ctx.canvas.height}`);
 
             let x = computedOptions.ratio.x;
             let y = computedOptions.ratio.y;
@@ -294,7 +297,7 @@
                 chartArea : () => {
                     ctx.save();
                     ctx.strokeStyle = 'red';
-                    ctx.lineWidth = 0.5;
+                    ctx.lineWidth = 3;
                     ctx.strokeRect(computedOptions.layout.padding.left,
                             computedOptions.layout.padding.top,
                             computedOptions.layout.chartWidth,
@@ -304,14 +307,14 @@
                 yTickLabel : () => {
                     ctx.save();
                     ctx.strokeStyle = 'green';
-                    ctx.lineWidth = 0.5;
+                    ctx.lineWidth = 3;
                     ctx.strokeRect(30, 30, 30, computedOptions.layout.chartHeight);
                     ctx.restore();
                 },
                 bottomLabel : () => {
                     ctx.save();
                     ctx.strokeStyle = 'blue';
-                    ctx.lineWidth = 1;
+                    ctx.lineWidth = 3;
                     ctx.strokeRect(0,
                                 computedOptions.layout.padding.top + computedOptions.layout.chartHeight,
                                 computedOptions.layout.bottomLable.width,
@@ -543,7 +546,7 @@
               
                 ctx.save();
                 ctx.beginPath();
-                ctx.fillStyle = 'blue';
+                ctx.fillStyle = globalDefaults.dataPointColor;
                 ctx.arc(x, y + options.topPadding, 3, 0, Math.PI*2);
                 ctx.fill();
                 ctx.restore();
@@ -560,7 +563,7 @@
             let yPoint = dataPoints[0].yPoint; 
             debugConsole(dataPoints[0].yPoint);
             ctx.moveTo(xPoint[0], yPoint[0]);
-            ctx.strokeStyle = 'green';
+            ctx.strokeStyle = globalDefaults.curveLineColor;
             ctx.lineWidth = 2;
             for(let i = 0; i < length; i++)
             {
@@ -675,8 +678,6 @@
         let me = this;
         let parentNode = me.canvas.parentNode;
 
-        console.dir('parentWidth : ' + parentNode.clientWidth); //parent Width
-        console.dir('parentHeight : ' + parentNode.clientHeight); //parent Width
         Helper.ratioCalculator(me.ctx);
 
         Helper.computeSize(me.ctx);

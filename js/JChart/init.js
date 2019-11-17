@@ -82,12 +82,14 @@ document.addEventListener('DOMContentLoaded', function()
         document.getElementById('bottomPadding').innerHTML = 'bottomPadding : ' + value.layout.padding.bottom;
         document.getElementById('leftPadding').innerHTML = 'leftPadding : ' + value.layout.padding.left;
         document.getElementById('rightPadding').innerHTML = 'rightPadding : ' + value.layout.padding.right;
+        document.getElementById('responsive').innerHTML = 'responsive : ' + value.responsive;
     };
 
     document.getElementById('chartUpdate').addEventListener('click', function(){
         var dummy = [randomScalingFactor(),randomScalingFactor(),randomScalingFactor(),randomScalingFactor(), randomScalingFactor()];
         console.warn('dummy : ' + dummy);
         config.data.datasets[0].data = dummy;
+        console.log(config);
         myChart.update();
     },false);
 
