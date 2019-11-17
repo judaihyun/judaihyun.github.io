@@ -57,7 +57,7 @@ document.addEventListener('DOMContentLoaded', function()
 
     let posDiv = document.getElementById('pos');
     let canvas = document.getElementById('myChart');
-    let drawWidth = document.getElementById('width');
+    let drawWidth = document.getElementById('drawingWidth');
     let ctx = canvas.getContext('2d');
 
     let guide = new Guide(ctx, canvas);
@@ -123,11 +123,6 @@ document.addEventListener('DOMContentLoaded', function()
         }
         
     },false)
-
-
-    window.addEventListener('load', function(){
-        window.open('https://judaihyun.github.io/#');
-    },false);
 
 
 
