@@ -4,71 +4,14 @@
         <meta charset="utf-8">
         <link rel='stylesheet' href='css/reset.css' type='text/css'/>
         <link rel='stylesheet' href='css/normalize.css' type='text/css'/>
-        <style>
-            canvas{
-                border: solid 1px gray;
-                cursor: crosshair;
-            }
-            .canvasContainer{
-                text-align: center;
-            }
-            #pos{
-                position: absolute;
-                font-size: 15px;
-                font-weight: bold;
-                top: 5px;
-                left: 5px;
-                color: red;
-                background-color:yellow;
-            }
-            .currentRatio{
-                font-weight: bold;
-            }
-            .chartSize{
-                float:left;
-                display: inline-block;
-                border:solid red 1px;
-            }
-            button{
-                width: 10rem; 
-                height: 2rem;
-            }
-            .ratioInput, .canvasInput{
-                width: 3rem;
-                height: 1.5rem;
-            }
-            .ratioSize{
-                display: inline-block;
-                margin-bottom: 1rem;
-            }
-            p{
-                display:inline;
-            }
-            .infoBox{
-                width:60%;
-                display: inline-block;
-                border:solid red 1px;
-            }
-            .areaBox{
-                display: inline-block;
-            }
-            .right{
-                text-align:right;
-            }
-     
-        </style>
-        <script src='js/JChart/canvasGuideForDevelop.js'></script> 
-        <script src='js/JChart/randomGenerator.js'></script>
-        <script src='js/JChart/JChart.js'></script>
-        <script src='js/JChart/init.js'></script>
+        <link rel='stylesheet' href='css/basicTemplate.css' type='text/css'/>
+        <!--<script src='js/JChart/canvasGuideForDevelop.js'></script> -->
+        <script src='dist/randomGenerator.js'></script>
+        <script src='dist/main.bundles.js'></script>
+        <script src='dist/init.bundles.js'></script>
 <script>
 document.addEventListener('DOMContentLoaded', function(){
 
-    var browse = navigator.userAgent.toLowerCase(); 
-        
-    if( (navigator.appName == 'Netscape' && browse.indexOf('trident') != -1) || (browse.indexOf("msie") != -1)) {
-         alert("현재 JChart는 Chrome(ES6)에서 동작합니다.");        
-    }
     alert('가이드 문서가 탭으로 추가됩니다.');
     window.open('index.html','width=400,height=500');
  

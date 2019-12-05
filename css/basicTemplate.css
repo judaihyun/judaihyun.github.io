@@ -1,0 +1,50 @@
+canvas{
+    border: solid 1px gray;
+    cursor: crosshair;
+}
+.canvasContainer{
+    text-align: center;
+}
+#pos{
+    position: absolute;
+    font-size: 15px;
+    font-weight: bold;
+    top: 5px;
+    left: 5px;
+    color: red;
+    background-color:yellow;
+}
+.currentRatio{
+    font-weight: bold;
+}
+.chartSize{
+    float:left;
+    display: inline-block;
+    border:solid red 1px;
+}
+button{
+    width: 10rem; 
+    height: 2rem;
+}
+.ratioInput, .canvasInput{
+    width: 3rem;
+    height: 1.5rem;
+}
+.ratioSize{
+    display: inline-block;
+    margin-bottom: 1rem;
+}
+p{
+    display:inline;
+}
+.infoBox{
+    width:60%;
+    display: inline-block;
+    border:solid red 1px;
+}
+.areaBox{
+    display: inline-block;
+}
+.right{
+    text-align:right;
+}
