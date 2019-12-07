@@ -78,7 +78,8 @@ let config =
     },false);
 
     document.getElementById('autoUpdateStop').addEventListener('click', function(){
-        clearInterval(timerId);
+		clearInterval(timerId);
+		timerId = null;
     },false);
 
     function chartUpdate()
