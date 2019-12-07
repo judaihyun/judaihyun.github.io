@@ -73,7 +73,8 @@ let config =
     document.getElementById('chartUpdate').addEventListener('click', chartUpdate);
 
     document.getElementById('autoUpdate').addEventListener('click', function(){
-        timerId = setInterval(chartUpdate, 1000);
+		if(!timerId)
+        	timerId = setInterval(chartUpdate, 1000);
     },false);
 
     document.getElementById('autoUpdateStop').addEventListener('click', function(){
